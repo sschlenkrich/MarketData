@@ -9,6 +9,9 @@ We use publicly available data from
   - [US Department of the Treasury](https://home.treasury.gov/interest-rates-data-csv-archive), and
   - [UK Bank of England](https://www.bankofengland.co.uk/statistics/yield-curves).
 
+Checkout the analysis via [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sschlenkrich/MarketData/HEAD?labpath=src/VolatilityAndCorrelations.ipynb).
+
+
 ## Input Data
 
 Input data sources and data consolidation is implemented in [ParseInputData](src/ParseInputData.ipynb) notebook.
