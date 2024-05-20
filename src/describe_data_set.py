@@ -3,6 +3,18 @@ import pandas as pd
 import plotly.express as px
 
 
+def normalised_term(years):
+    months = round(12*years)
+    y = months // 12
+    m = months % 12
+    term = ""
+    if y > 0:
+        term = term + str(y) + "Y"
+    if m > 0:
+        term = term + str(m) + "M"
+    return term
+
+
 def describe_values(data_set):
     table = pd.pivot_table(data_set, values="VALUE", index="DATE", columns=["CURRENCY", "MONTHS", "TERM"])
     return table.describe().T
@@ -53,7 +65,7 @@ def plot_volatility_distribution(std_table, return_days):
             table[c] = table[c] * 100  # FX vol in percent
         else:
             table[c] = table[c] * 10000  # rates vol in basis points
-    table.columns = [ c[0] + "_" + str(c[1]) for c in table.columns ]
+    table.columns = [ c[0] + "_" + normalised_term(c[1]/12) for c in table.columns ]
     fig = px.box(table)
     fig.update_layout(
         xaxis_title = "Currency",
